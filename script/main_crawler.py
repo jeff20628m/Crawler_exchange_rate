@@ -1,7 +1,14 @@
-from crawler import calendar_select_day, calender_select_month, main_content
+from crawler import (chrome_setting, get_topic_link, crawler_topic)
+import time
 
-calender_select_month('2020 5月')
+driver = chrome_setting()
 
-calendar_select_day('1', '1')
+time.sleep(2)
+topic_link = get_topic_link(driver, 'https://news.cnyes.com')
+driver.close()
+df_stock = crawler_topic(start_date='2019/1/1',
+                         end_date='2019/7/1',
+                         topic_link=topic_link,
+                         topic='台股')
 
-print(main_content())
+df_stock.to_csv('./data/TW_STOCK_NEWS.csv', index=False)
