@@ -116,7 +116,7 @@ def main_content(driver):
             driver.find_element_by_xpath(
                 "//body/div[@id='content']/div[1]/div[1]/div[3]/div[1]/div[1]"
             ).click()
-        except selenium.common.exceptions.ElementNotInteractableException:        
+        except selenium.common.exceptions.ElementNotInteractableException:
             date.append(block.find('time').text)
             title.append(block['title'])
             category.append(block.find(class_="_jFb7 theme-sub-cat").text)
@@ -227,6 +227,9 @@ def crawler_topic_content(df_stock):  # now just for stock
         except (AttributeError, TypeError):
             new_reference_title.append('None')
 
+    df['date'] = df_stock['date']
+    df['title'] = df_stock['title']
+    df['category'] = df_stock['category']
     df['reportor'] = reportor
     df['content'] = content
     df['stock_name'] = stock_name
