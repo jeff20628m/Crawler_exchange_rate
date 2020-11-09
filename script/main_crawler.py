@@ -12,7 +12,7 @@ df_stock = crawler_topic(start_date='2019/1/1',
                          topic_link=topic_link,
                          topic='台股')
 
-#df_stock.to_csv('./data/TW_STOCK_NEWS.csv', index=False)
+# df_stock.to_csv('./data/TW_STOCK_NEWS.csv', index=False)
 
 df_content = crawler_topic_content(df_stock)
 
